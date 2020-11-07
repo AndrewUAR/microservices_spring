@@ -2,20 +2,38 @@ package com.appdeveloper.photoapp.api.users.data;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Column;
+
 
 @Entity
+@Table(name="users")
 public class UserEntity implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 2714250053270592145L;
+	
+	@Id
+	@GeneratedValue
 	private long id;
+	
+	@Column(nullable=false, length=50)
 	private String firstName;
+	
+	@Column(nullable=false, length=50)
 	private String lastName;
+	
+	@Column(nullable=false, length=120, unique=true)
 	private String email;
-	private String password;
+	
+	@Column(nullable=false, unique=true)
 	private String userId;
+	
+	@Column(nullable=false)
 	private String encryptedPassword;
 	
 	public long getId() {
@@ -42,12 +60,7 @@ public class UserEntity implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
+	
 	public String getUserId() {
 		return userId;
 	}
