@@ -7,4 +7,5 @@ import com.appdeveloper.photoapp.api.users.shared.UserDto;
 public interface UsersService extends UserDetailsService {
 	UserDto create(UserDto userDetails);
 	UserDto getUserDetailsByEmail(String email);
+	UserDto getUserByUserId(String userId);
 }
